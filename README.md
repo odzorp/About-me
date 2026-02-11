@@ -1,81 +1,69 @@
 # 👋 Hi, I'm Philip Odzor
 
+![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=22&pause=1000&color=38BDF8&width=600&lines=QA+Engineer;Test+Automation+Specialist;Performance+Testing+with+JMeter;CI%2FCD+Enthusiast;Building+Reliable+Software)
+
 🧪 **Quality Assurance Engineer | Test Automation | Performance Testing | CI/CD**
 
-I build reliable, scalable, and high-quality software through smart testing strategies, clean automation, and continuous integration.
+I design, test, and automate software to ensure every release is stable, scalable, and production-ready.
 
-From manual testing to full automation frameworks, I focus on catching issues early, improving release confidence, and shipping software that *just works*.
+💡 *Break → Test → Automate → Repeat*
 
 ---
 
 ## 🚀 About Me
 
-🔹 QA Engineer with hands-on experience in **Web & Mobile testing**  
-🔹 Strong in **Automation, API, and Performance testing**  
-🔹 Passionate about **clean code + efficient test design**  
-🔹 Advocate for **quality-first development & CI/CD culture**  
+🔹 Automation-first QA Engineer  
+🔹 Web, Mobile & API Testing  
+🔹 Cypress • Selenium • Playwright  
+🔹 JMeter Performance Testing  
+🔹 CI/CD pipeline integration  
+🔹 JavaScript & Python  
 
-💡 *I enjoy breaking systems, finding edge cases, and turning repetitive tests into reliable automation.*
+Passionate about turning repetitive tests into reliable automation and shipping bug-free software faster.
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-### 🔹 Testing & Automation
-![Cypress](https://img.shields.io/badge/Cypress-Testing-17202C?logo=cypress)
-![Selenium](https://img.shields.io/badge/Selenium-Automation-43B02A?logo=selenium)
-![Playwright](https://img.shields.io/badge/Playwright-Testing-2EAD33?logo=playwright)
-![Postman](https://img.shields.io/badge/Postman-API-FF6C37?logo=postman)
-![JMeter](https://img.shields.io/badge/JMeter-Performance-D22128?logo=apache)
+### Testing & Automation
+![Cypress](https://img.shields.io/badge/Cypress-17202C?logo=cypress&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?logo=selenium&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?logo=playwright&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)
+![JMeter](https://img.shields.io/badge/JMeter-D22128?logo=apache&logoColor=white)
 
-### 🔹 Languages & Tools
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript)
-![Git](https://img.shields.io/badge/Git-VersionControl-F05032?logo=git)
-![Jira](https://img.shields.io/badge/Jira-BugTracking-0052CC?logo=jira)
+### Languages & Tools
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
+![Jira](https://img.shields.io/badge/Jira-0052CC?logo=jira&logoColor=white)
 ![CI/CD](https://img.shields.io/badge/CI/CD-Automation-blue)
-![Agile](https://img.shields.io/badge/Agile-Scrum-orange)
 
 ---
 
-## 🧪 What I Work On
+# 📊 GitHub Activity (Live)
 
-✔ Test case design & execution  
-✔ End-to-end automation frameworks  
-✔ API & backend validation  
-✔ Performance & load testing (JMeter)  
-✔ CI/CD test integration  
-✔ Regression & exploratory testing  
-✔ Improving product quality & reliability  
+### Stats
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=odzorp&show_icons=true&count_private=true&include_all_commits=true&theme=tokyonight)
 
----
-
-## 📊 GitHub Stats
-
-![Philip's GitHub stats](https://github-readme-stats.vercel.app/api?username=odzorp&show_icons=true&theme=tokyonight)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=odzorp&layout=compact&theme=tokyonight)
-
+### Streak
 ![GitHub Streak](https://streak-stats.demolab.com?user=odzorp&theme=tokyonight)
 
----
+### Contribution Graph
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=odzorp&theme=tokyo-night)
 
-## 📌 Featured Projects
 
-🔹 **Automation Frameworks** – Cypress/Selenium test suites  
-🔹 **API Testing Collections** – Postman validation workflows  
-🔹 **Performance Tests** – JMeter load testing setups  
-🔹 **JavaScript Practice Apps** – clean frontend logic & testing experiments  
+# 🤝 Connect With Me
 
-👉 Explore my repositories to see real testing implementations in action.
+💼 LinkedIn → https://www.linkedin.com/in/philip-odzor-w369/  
+📫 Email → odzorp3@gmail.com
 
 ---
 
-## 🤝 Let's Connect
+![Profile Views](https://komarev.com/ghpvc/?username=odzorp&color=blue)
 
-💼 LinkedIn: https://www.linkedin.com/in/philip-odzor-w369/  
-📫 Email: odzorp3@gmail.com  
+⭐ Always testing. Always improving. Always shipping quality.
 
----
 
 ![Profile Views](https://komarev.com/ghpvc/?username=odzorp&color=blue)
 

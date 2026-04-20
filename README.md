@@ -1,3 +1,7 @@
+<!--START_SECTION:activity-->
+- 0
+0 recent event(s) in this repo
+<!--END_SECTION:activity-->
 # 👋 Hi, I'm Philip Odzor
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=22&pause=1000&color=38BDF8&width=600&lines=QA+Engineer;Test+Automation+Specialist;Performance+Testing+with+JMeter;CI%2FCD+Enthusiast;Building+Reliable+Software)

@@ -8,6 +8,8 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: Readme-Workflows/recent-activity@v2.4.1

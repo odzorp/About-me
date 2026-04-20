@@ -1,0 +1,53 @@
+name: Update README Activity
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Get recent activity
+        run: |
+          # Get recent events
+          EVENTS=$(gh api users/odzorp/events --limit 20 2>/dev/null)
+          
+          # Count activities
+          PUSHES=$(echo "$EVENTS" | grep -c '"type":"PushEvent"' || echo "0")
+          ISSUES=$(echo "$EVENTS" | grep -c '"type":"IssuesEvent"' || echo "0")
+          PRS=$(echo "$EVENTS" | grep -c '"type":"PullRequestEvent"' || echo "0")
+          
+          # Build activity section
+          cat >> README.md << 'EOF'
+          
+          ## Recent Activity
+          
+          <!--START_SECTION:activity-->
+          EOF
+          
+          if [ "$PUSHES" -gt 0 ]; then
+            echo "- $PUSHES commit(s) pushed" >> README.md
+          fi
+          if [ "$ISSUES" -gt 0 ]; then
+            echo "- $ISSUES issue(s)" >> README.md
+          fi
+          if [ "$PRS" -gt 0 ]; then
+            echo "- $PRS PR(s)" >> README.md
+          fi
+          
+          echo "<!--END_SECTION:activity-->" >> README.md
+      
+      - name: Commit and push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md
+          git diff --staged --quiet || git commit -m "Update recent activity" && git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

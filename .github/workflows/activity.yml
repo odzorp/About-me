@@ -13,46 +13,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Set up gh
+      - name: Set up gh and get activity
         run: |
           export GH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          gh auth status
           
-          # Get recent events
-          EVENTS=$(gh api users/odzorp/events --limit 20 2>/dev/null)
-          
-          # Count activities
-          PUSHES=$(echo "$EVENTS" | grep -o '"type":"PushEvent"' | wc -l)
-          ISSUES=$(echo "$EVENTS" | grep -o '"type":"IssuesEvent"' | wc -l)
-          PRS=$(echo "$EVENTS" | grep -o '"type":"PullRequestEvent"' | wc -l)
-          
-          # Get recent commits
-          COMMITS=$(gh api users/odzorp/events --type PushEvent --limit 5 2>/dev/null)
+          # Get repo activity (for odzorp/About-me)
+          ACT_COUNT=$(gh api repos/odzorp/About-me/events --limit 20 2>/dev/null | grep -c '"type"' || echo "0")
           
           # Remove old activity section
           sed -i '/<!--START_SECTION:activity-->/,/<!--END_SECTION:activity-->/d' README.md 2>/dev/null || true
           
-          # Add new activity section before any existing content or at top
           {
             echo "<!--START_SECTION:activity-->"
-            if [ "$PUSHES" -gt 0 ]; then
-              echo "- $PUSHES commit(s) pushed"
-            fi
-            if [ "$ISSUES" -gt 0 ]; then
-              echo "- $ISSUES issue(s) opened/closed"
-            fi
-            if [ "$PRS" -gt 0 ]; then
-              echo "- $PRS pull request(s) opened/merged"
-            fi
+            echo "- $ACT_COUNT recent event(s) in this repo"
             echo "<!--END_SECTION:activity-->"
           } > /tmp/activity.txt
           
-          # Prepend to README if it has content, otherwise just write
+          # Add to beginning of README
           if [ -s README.md ]; then
             cat /tmp/activity.txt README.md > /tmp/new_readme.md
             mv /tmp/new_readme.md README.md
           else
             cat /tmp/activity.txt > README.md
           fi
+          
+          echo "README updated with activity"
       
       - name: Commit and push
         run: |
@@ -60,4 +46,4 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git diff --staged --quiet || git commit -m "Update recent activity" && git push
+          git diff --staged --quiet || (git commit -m "Update recent activity" && git push)

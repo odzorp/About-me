@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         
-      - name: Set GH_TOKEN
+      - name: Test gh
         run: |
           export GH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           gh auth status
-          gh repo view odzorp/About-me --jq '.name'
+          gh repo view odzorp/About-me --json name

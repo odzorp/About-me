@@ -1,0 +1,26 @@
+# Recent Activity Configuration
+# See: https://github.com/Readme-Workflows/recent-activity
+
+# Choose the activity types to show
+activity:
+  - commits
+  - issues:
+      max: 5
+  - prs:
+      max: 5
+  - releases
+  - reviews
+
+# Customize the output format
+render: true
+
+# Exclude specific repositories
+exclude:
+  repos: []
+  users: []
+
+# File to update (usually your README)
+file: README.md
+
+# Maximum 10 items to display per activity type
+maxItems: 10

@@ -13,41 +13,51 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Get recent activity
+      - name: Set up gh
         run: |
+          export GH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          
           # Get recent events
           EVENTS=$(gh api users/odzorp/events --limit 20 2>/dev/null)
           
           # Count activities
-          PUSHES=$(echo "$EVENTS" | grep -c '"type":"PushEvent"' || echo "0")
-          ISSUES=$(echo "$EVENTS" | grep -c '"type":"IssuesEvent"' || echo "0")
-          PRS=$(echo "$EVENTS" | grep -c '"type":"PullRequestEvent"' || echo "0")
+          PUSHES=$(echo "$EVENTS" | grep -o '"type":"PushEvent"' | wc -l)
+          ISSUES=$(echo "$EVENTS" | grep -o '"type":"IssuesEvent"' | wc -l)
+          PRS=$(echo "$EVENTS" | grep -o '"type":"PullRequestEvent"' | wc -l)
           
-          # Build activity section
-          cat >> README.md << 'EOF'
+          # Get recent commits
+          COMMITS=$(gh api users/odzorp/events --type PushEvent --limit 5 2>/dev/null)
           
-          ## Recent Activity
+          # Remove old activity section
+          sed -i '/<!--START_SECTION:activity-->/,/<!--END_SECTION:activity-->/d' README.md 2>/dev/null || true
           
-          <!--START_SECTION:activity-->
-          EOF
+          # Add new activity section before any existing content or at top
+          {
+            echo "<!--START_SECTION:activity-->"
+            if [ "$PUSHES" -gt 0 ]; then
+              echo "- $PUSHES commit(s) pushed"
+            fi
+            if [ "$ISSUES" -gt 0 ]; then
+              echo "- $ISSUES issue(s) opened/closed"
+            fi
+            if [ "$PRS" -gt 0 ]; then
+              echo "- $PRS pull request(s) opened/merged"
+            fi
+            echo "<!--END_SECTION:activity-->"
+          } > /tmp/activity.txt
           
-          if [ "$PUSHES" -gt 0 ]; then
-            echo "- $PUSHES commit(s) pushed" >> README.md
+          # Prepend to README if it has content, otherwise just write
+          if [ -s README.md ]; then
+            cat /tmp/activity.txt README.md > /tmp/new_readme.md
+            mv /tmp/new_readme.md README.md
+          else
+            cat /tmp/activity.txt > README.md
           fi
-          if [ "$ISSUES" -gt 0 ]; then
-            echo "- $ISSUES issue(s)" >> README.md
-          fi
-          if [ "$PRS" -gt 0 ]; then
-            echo "- $PRS PR(s)" >> README.md
-          fi
-          
-          echo "<!--END_SECTION:activity-->" >> README.md
       
       - name: Commit and push
         run: |
+          export GH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
           git diff --staged --quiet || git commit -m "Update recent activity" && git push
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

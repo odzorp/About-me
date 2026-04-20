@@ -13,3 +13,4 @@ jobs:
       - uses: Readme-Workflows/recent-activity@v2.4.1
         with:
           GH_USERNAME: odzorp
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

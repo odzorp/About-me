@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: Readme-Workflows/recent-activity@v4
+      - uses: Readme-Workflows/recent-activity@v2.4.1
         with:
           GH_USERNAME: odzorp
-          CONFIG_FILE: .github/activity-config.yml
